@@ -8,6 +8,57 @@
     <title>Code Quiz</title>
 </head>
 <body>
-    <script src="./script.js"></script>    
+    <header>
+        <div id="header">
+            <a id= "score" class="highscore" href>View High Scores</a> 
+            <h2 id="timer"></h2>
+        </div>
+    </header>
+     <!---Body-->
+    <main class="container">
+         <!---Quiz Intro-->
+        <div class="row" id= "intro">
+            <h2 class="start">Coding Quiz Challenge</h2>
+            <p id="rules">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            <button class="btnStart" id="startBtn" type="submit">Start Quiz</button>
+        </div>
+        <!---Quiz Questions-->
+        <div id= "quiz">
+            <div id= "question"></div>
+                <div id= "choices">
+                    <ul>
+                        <li><button type="button" class="choice option-1 choice-button" id="1" onclick="checkAnswer('1')"></button></li>
+                        <li><button type="button" class="choice option-2 choice-button" id="2" onclick="checkAnswer('2')"></button></li>
+                        <li><button type="button" class="choice option-3 choice-button" id="3" onclick="checkAnswer('3')"></button></li>
+                        <li><button type="button" class="choice option-4 choice-button" id="4" onclick="checkAnswer('4')"></button></li>
+                    </ul>
+                </div>
+             <!---Answer Right or Wrong--->
+            <div id="answerOutput"> </div>
+        </div>
+         <!---Score Info-->
+        <div id="finalScore">
+            <h2 id="endMessage">All done!</h2>
+            <div id="result"></div>
+             <!---Form to enter initials-->
+             <form >
+                <div id="initials">
+                    <label for="users" id="name">Enter Initials:</label>
+                    <input type="text" id="contactInfo">
+                    <input type="button" id= "userInfo" class="submitBtn" value="Submit" />
+                </div>
+            </form>
+        </div>
+    </main> 
+    <!-- This is the Javascript document -->
+    <script src="./assets/js/script.js"></script>    
 </body>
+
+<footer>
+    <div class="footer">
+    Made with ❤️️ by Dinh Tran<br>
+    Thanks for visiting
+    </div>
+</footer>
+
 </html>
