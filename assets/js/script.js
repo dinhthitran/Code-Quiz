@@ -153,3 +153,7 @@ userInfo.addEventListener("click", function() {
     
     loadScores();
     });
+
+submitBtn.addEventListener("Click", function() {
+
+})
