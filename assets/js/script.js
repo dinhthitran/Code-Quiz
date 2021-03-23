@@ -154,6 +154,31 @@ userInfo.addEventListener("click", function() {
     loadScores();
     });
 
-submitBtn.addEventListener("click", function() {
-var submitBtn = document.getElementByClass("submitBtn");
-})
+
+
+
+
+
+
+
+
+
+
+
+    
+
+// function loadScores (){
+
+//     var obj = JSON.parse(localStorage.getItem())
+// }
+
+
+
+// submitBtn.addEventListener("click", function() {
+//     var submitBtn = document.getElementByClass("submitBtn");
+
+//     localStorage.setItem
+
+// })
+
+// function 

@@ -68,6 +68,8 @@ font-weight: bolder;
 .btnStart:hover {
     background-color: var(--secondary-color);
     border-style:dotted;
+    width:120px;
+    height:50px;
 }
 
 /* Quiz Style */
