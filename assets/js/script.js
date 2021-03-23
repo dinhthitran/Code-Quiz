@@ -154,6 +154,6 @@ userInfo.addEventListener("click", function() {
     loadScores();
     });
 
-submitBtn.addEventListener("Click", function() {
-
+submitBtn.addEventListener("click", function() {
+var submitBtn = document.getElementByClass("submitBtn");
 })
