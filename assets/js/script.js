@@ -14,6 +14,7 @@ var result = document.getElementById("result");
 var scoreList = document.getElementById("scorelist");
 var scoresArr = []
 
+//tutor assistance to retrieve storage and ran loop too fix overwriting issue of 
 var scoresFromLocalStorage = JSON.parse(localStorage.getItem("scores"))
 if(scoresFromLocalStorage !== null){
    for (let i = 0; i < scoresFromLocalStorage.length; i++) {
@@ -153,6 +154,9 @@ function resultRender() {
     quiz.style.display = "none";
     intro.style.display = "none";
     finalScore.style.display = "block";
+    goBack.style.display = "none";
+    clear.style.display = "none";
+    highScoreHeading.style.display = "none";
 
     if (timeLeft === 0 || questions.length - 1) {
         result.textContent = "Your final score is " + timeLeft + ".";
@@ -174,6 +178,12 @@ userInfo.addEventListener("click", function () {
     loadScores();
 });
 
+
+
+// function loadScores() {
+//     var obj = JSON.parse(localStorage.getItem())
+// }
+
 // submitBtn.addEventListener("click", function () {
 //     console.log("submitBtn")
 // })
@@ -184,14 +194,3 @@ userInfo.addEventListener("click", function () {
 //     // localStorage.setItem
 //     console.log(submitBtn)
 // })
-
-
-
-
-
-
-
-
-function loadScores() {
-    // var obj = JSON.parse(localStorage.getItem())
-}
