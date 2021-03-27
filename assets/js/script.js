@@ -180,9 +180,10 @@ userInfo.addEventListener("click", function () {
 
 
 
-// function loadScores() {
-//     var obj = JSON.parse(localStorage.getItem())
-// }
+function loadScores() {
+    var obj = JSON.parse(localStorage.getItem())
+   
+}
 
 // submitBtn.addEventListener("click", function () {
 //     console.log("submitBtn")
