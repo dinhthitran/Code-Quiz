@@ -45,21 +45,23 @@
                     <label for="users" id="name">Enter Initials:</label>
                     <input type="text" id="contactInfo" placeholder="Please enter here">
                     <input type="button" id= "userInfo" class="submitBtn" value="Submit">
-                    <div id="highScore">
-
-                        <!-- Final high scores storage go back and clear  -->
-                        
-                        <div class= highScoreList>
-                            <h2 id="highScoreHeading" >High Scores</h2>
-                        </div>
-                           <button id="goBack" class="backBtn" type="submit">Go Back</button>
-                        </div>
-                        <div class="clearBtn">
-                            <button id="clear" class="btn" type="submit">Clear High Scores</button>
-                        </div>
-
                 </div>
             </form>
+        </div>
+        <!-- Final high scores storage go back and clear  -->
+        <div id="highScore">
+            <div class="highScoreList">
+                <h2 id="highScoreHeading">High Scores</h2>
+            </div>
+            <ul id="highScoreList">
+                <!-- Add high scorer here as li items -->
+            </ul>
+            <div>
+                <button id="goBack" class="backBtn" type="submit">Go Back</button>
+            </div>
+            <div class="clearBtn">
+                <button id="clear" class="btn" type="submit">Clear High Scores</button>
+            </div>
         </div>
     </main> 
     <!-- This is the Javascript document -->

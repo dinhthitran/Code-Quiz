@@ -12,17 +12,11 @@ var finalScore = document.getElementById("finalScore");
 var endMessage = document.getElementById("endMessage");
 var result = document.getElementById("result");
 var scoreList = document.getElementById("scorelist");
+var goBack = document.getElementById("goBack");
+var highScore = document.getElementById("highScore");
+var clearHighScoresButton = document.getElementById("clear");
+var highScoreList = document.getElementById("highScoreList");
 var scoresArr = []
-
-//tutor assistance to retrieve storage and ran loop too fix overwriting issue of 
-var scoresFromLocalStorage = JSON.parse(localStorage.getItem("scores"))
-if(scoresFromLocalStorage !== null){
-   for (let i = 0; i < scoresFromLocalStorage.length; i++) {
-      scoresArr.push(scoresFromLocalStorage[i])
-   }
-}
-console.log(scoresFromLocalStorage);
-
 
 //The array of questions 
 var questions = [
@@ -154,9 +148,6 @@ function resultRender() {
     quiz.style.display = "none";
     intro.style.display = "none";
     finalScore.style.display = "block";
-    goBack.style.display = "none";
-    clear.style.display = "none";
-    highScoreHeading.style.display = "none";
 
     if (timeLeft === 0 || questions.length - 1) {
         result.textContent = "Your final score is " + timeLeft + ".";
@@ -175,23 +166,80 @@ userInfo.addEventListener("click", function () {
     localStorage.setItem("scores", JSON.stringify(scoresArr));
     // localStorage.setItem("timeLeft", JSON.stringify(timeLeft));
 
-    loadScores();
+    // loadScores();
+    resultsPage();
 });
 
+//tutor assistance to retrieve storage and ran loop too fix overwriting issue of 
+var scoresFromLocalStorage = JSON.parse(localStorage.getItem("scores"))
+
+if(scoresFromLocalStorage !== null){
+    for (let i = 0; i < scoresFromLocalStorage.length; i++) {
+        scoresArr.push(scoresFromLocalStorage[i])
+    }
+}
+console.log(scoresFromLocalStorage);
 
 
-function loadScores() {
-    var obj = JSON.parse(localStorage.getItem())
-   
+
+// variable for submit button
+var submitBtn = document.getElementById("userInfo");
+
+// Listener Event to go to final page with click of "submit" button
+
+submitBtn.addEventListener("click", resultsPage);
+
+function resultsPage () {
+    finalScore.style.display = "none";
+    highScore.style.display = "block";
+    // Display High Scores LIst
+    renderHighScoreList();
 }
 
-// submitBtn.addEventListener("click", function () {
-//     console.log("submitBtn")
-// })
-//submit 
+// When the clear high scores button is clicked.
+clearHighScoresButton.addEventListener("click", function () { 
+    // Clear the localStorage (browser) scores.
+    localStorage.removeItem("scores");
+    // Update our 'application' scores.
+    updateScoresArray();
+    // Render the high score list.
+    renderHighScoreList();
+});
 
-// submitBtn.addEventListener("click", function () {
+// We use this to update our application score, when the clear button is clicked.
+function updateScoresArray() {
+    // Update the scoresArr to be the current vlaue of the local storage 'scores'
+    //      This is important, because sometimes we reset the local storage
+    //      for example - when we clearHighScoresButton above.
+    scoresArr = localStorage.getItem("scores");
+}
 
-//     // localStorage.setItem
-//     console.log(submitBtn)
-// })
+// Create goBack event handler and function.
+goBack.addEventListener("click", function () { 
+    // This reloads the location to current path (.) then index.html.
+    //      "mywebsite.com/mypage.html" ==- WONT WORK
+    //      "mywebsite.com/whatever/path/here/index.html" ==- WILL Work
+    //      "mywebsite.com/././././index.html"
+
+    // This also means we don't need to .style.display = none for all our elements.
+    //      It's a shortcut back to start the quiz again.
+    window.location.replace('./index.html');
+});
+
+// render the High Schore List
+function renderHighScoreList() {
+    // Set the current high score list text in the browser to ''
+    highScoreList.innerHTML = "";
+    // If the scoresArray is NOT null..
+    if (scoresArr !== null) {
+        // Iterate over our array of scores
+        for (var i = 0; i < scoresArr.length; i++) {
+            // Create a new list item element.
+            var createLi = document.createElement("li");
+            // Add the initials, and the time (score), to the list item.
+            createLi.textContent = scoresArr[i].initials + " " + scoresArr[i].time;
+            // Add the list item to the high score list in the browser.
+            highScoreList.appendChild(createLi);   
+        }
+    }
+}
